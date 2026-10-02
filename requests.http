@@ -1,0 +1,59 @@
+### Получить все растения
+GET http://localhost:3000/plants
+
+### Получить растения с фильтром по виду (GET)
+GET http://localhost:3000/plants?species=Кактус
+
+### Получить одно растение по ID 
+GET http://localhost:3000/plants/1
+
+### Создать новое растение (POST)
+![Создание растения](images/post_201.png)
+POST http://localhost:3000/plants
+Content-Type: application/json
+
+{
+  "name": "Алоэ Вера",
+  "species": "Суккулент",
+  "wateringIntervalDays": 14
+}
+
+###Создать растение с ошибкой 400
+![Ошибка валидации](images/error_400.png)
+POST http://localhost:3000/plants
+Content-Type: application/json
+
+{
+  "name": "",
+  "species": "Ошибочное",
+  "wateringIntervalDays": -5
+}
+
+### Обновить растение целиком 
+PUT http://localhost:3000/plants/1
+Content-Type: application/json
+
+{
+  "name": "Алоэ Вера (обновлено)",
+  "species": "Суккулент",
+  "wateringIntervalDays": 20
+}
+
+### Частично обновить растение 
+PATCH http://localhost:3000/plants/1
+Content-Type: application/json
+
+{
+  "name": "Алоэ Вера (патч)"
+}
+
+### Удалить растение 
+![Удаление](images/delete_204.png)
+DELETE http://localhost:3000/plants/2
+
+### Вернет 404
+![404 ошибка](images/get_404.png)
+GET http://localhost:3000/plants/999
+
+###Вернет 404
+GET http://localhost:3000/nesuschestvuyushiy-marshrut
